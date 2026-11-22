@@ -27,6 +27,12 @@ export class BookingCard extends HTMLElement {
     const article = document.createElement('article')
     this.button.type = 'button'
     article.append(this.nameText, this.seatsText, this.sourceText, this.statusText, this.button)
+    const note = document.createElement('slot')
+    note.name = 'note'
+    note.textContent = 'Комментарий не задан'
+    const noteText = document.createElement('p')
+    noteText.append(note)
+    this.button.before(noteText)
     // А1: создайте открытый shadow root, поместите в него style и article.
     this.attachShadow({ mode: 'open' }).append(style, article)
     // А2: отобразите начальное состояние без данных.
